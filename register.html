@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_2.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/jquery.js"></script>
+    <script src="popper.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    
+    <style>
+        .img{
+            background-image: url("image/1.jpg");
+            width: 100%;
+            height: 500px;
+            background-size: 100% 100%;
+            margin: 0px;
+        }
+        label{
+            margin-top: 15px;
+        }
+        .footer{
+            background-color: blueviolet;
+            height: 167px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center img p-3">
+            <div class="col-md-5 bg-white px-5 py-4 mt-4 rounded">
+                <h1 class="text-center py-2">Sign Up Here</h1>
+                <form method="post">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" placeholder="Enter First Name" name="fname" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Last Name" name="lname" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Username&nbsp&nbsp</label><small style="font-size: 15px; font-weight:550 " id="result"></small>
+                        <input type="text" class="form-control" placeholder="Enter Username" name="uname" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="Enter Password" name="password" required pattern="{6}">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="Enter Email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Contact Number</label><small style="font-size: 15px; font-weight:550 " id="cont_result"></small>
+                                <input type="text" class="form-control" placeholder="Enter Contact Number" name="contact" pattern="[0-9]{10}" title="Number must contain 10 digits only" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label>User Type</label>
+                                <select class="form-control" name="utype" required>
+                                    <option value="cust">Teacher</option>
+                                    <option value="sell">Student</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-5">
+                        <a href="index.html"><input type="button" class="btn btn-success" value="Sign Up" id="submitbtn" style="width: 100%;"></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row footer">
+        </div>
+    </div>
+    
+</body>
+</html>

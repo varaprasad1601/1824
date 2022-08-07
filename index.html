@@ -1,0 +1,576 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creart</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="V SSS VaraPrasad N180545">
+
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_2.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/jquery.js"></script>
+    <script src="popper.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    
+
+    <style>
+        body{
+          scroll-behavior: smooth;
+        }
+        .hamburger{
+            position: relative;
+            left:-13;
+            width: 25px;
+            height: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            margin-right: 15px;
+        }
+        .line{
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-color);
+        }
+        .line1{
+            transform-origin: 0% 0%;
+            transition: transform 0.4s ease-in-out;
+        }
+        .line2{
+            transition: transform 0.2s ease-in-out;
+        }
+        .line3{
+            transform-origin: 0% 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+        .checkbox{
+            position: relative;
+            left: 12px;
+            height: 30px;
+            width: 30px;
+            display: block;
+            z-index: 5;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .checkbox:checked ~ .hamburger .line1{
+            transform: rotate(45deg);
+        }
+        .checkbox:checked ~ .hamburger .line2{
+            transform: scaleY(0);
+        }
+        .checkbox:checked ~ .hamburger .line3{
+            transform: rotate(-45deg);
+        }
+        .play-btn{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.65);
+            object-fit: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: gold;
+        }
+        .video{
+            display: flex;
+            justify-content: center;
+            margin-top: 28px;
+            z-index: 0;
+        }
+        .lap-img{
+            background-image: url("image/lap.png");
+            background-size: 100% 100%;
+            width: 480px;
+        }
+        .lap-block{
+            height: 295px;
+        }
+        .circle{
+          width: 150px;
+          height: 150px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+        }
+        .msg{
+          width: 60px;
+          height: 60px;
+          position: fixed;
+          right: 20px;
+          bottom: 20px;
+          font-size: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+    </style>
+
+</head>
+<body id="top">
+    
+    <!-- side nav-bar -->
+    <div class="sidebar close">
+        <div class="logo-details">
+          <i class='bx bxl-c-plus-plus' onclick="tick()"></i>
+          <span class="logo_name">Creart</span>
+        </div>
+        <ul class="nav-links">
+          <li class="li">
+            <a href="#top">
+              <i class='bx bx-grid-alt' ></i>
+              <span class="link_name">Dashboard</span>
+            </a>
+            <ul class="sub-menu blank">
+              <li><a class="link_name" href="#">Dashboard</a></li>
+            </ul>
+          </li>
+
+          <li class="li">
+            <div class="iocn-link">
+              <a href="#">
+                <i class='bx bx-collection' ></i>
+                <span class="link_name">Category</span>
+              </a>
+              <i class='bx bxs-chevron-down arrow' ></i>
+            </div>
+            <ul class="sub-menu">
+              <li><a class="link_name" href="#">Category</a></li>
+              <li><a href="#">Frontend</a></li>
+              <li><a href="#">Backend</a></li>
+              <li><a href="#">Fullstack</a></li>
+            </ul>
+          </li>
+
+          <li class="li">
+            <a href="#analytics">
+              <i class='bx bx-pie-chart-alt-2' ></i>
+              <span class="link_name">Analytics</span>
+            </a>
+            <ul class="sub-menu blank">
+              <li><a class="link_name" href="#analytics">Analytics</a></li>
+            </ul>
+          </li>
+
+          <li class="li">
+            <a href="#">
+              <i class='far fa-comment-alt' ></i>
+              <span class="link_name">Chart</span>
+            </a>
+            <ul class="sub-menu blank">
+              <li><a class="link_name" href="#">Chart</a></li>
+            </ul>
+          </li>
+
+          <li class="li">
+            <a href="#programs">
+              <i class='bx bx-compass' ></i>
+              <span class="link_name">Explore</span>
+            </a>
+            <ul class="sub-menu blank">
+              <li><a class="link_name" href="#programs">Explore</a></li>
+            </ul>
+          </li>
+
+          <li class="li">
+            <a href="#staff">
+              <i class='bx bx-user'></i>
+              <span class="link_name">Mentors</span>
+            </a>
+            <ul class="sub-menu blank">
+              <li><a class="link_name" href="#">Mentors</a></li>
+            </ul>
+          </li>
+
+          <li class="li">
+            <a href="#">
+              <i class='bx bx-cog' ></i>
+              <span class="link_name">Setting</span>
+            </a>
+            <ul class="sub-menu blank">
+              <li><a class="link_name" href="#">Setting</a></li>
+            </ul>
+          </li>
+          
+          <!-- <li class="mode">
+            <div class="sun-moon">
+                <i class='bx bx-moon icon moon'></i>
+                <i class='bx bx-sun icon sun'></i>
+            </div>
+            <span class="mode-text">Dark mode</span>
+
+            <div class="toggle-switch">
+                <span class="switch"></span>
+            </div>
+        </li> -->
+
+          <li>
+            <div class="profile-details">
+                <div class="profile-content">
+                    <img src="image/profile.jpg" alt="profileImg">
+                </div>
+                <div class="name-job">
+                    <div class="profile_name">Varaprasad</div>
+                    <div class="job">Graphic Designer</div>
+                </div>
+                <i class='bx bx-log-out' ></i>
+            </div>
+          </li>
+        </ul>
+    </div>
+
+
+    <section class="home-section">
+
+
+        <!-- nav -->
+        <nav class="navbar navbar-expand-sm d-flex justify-content-start">
+            <input type="checkbox" class="checkbox" id="checkbox" onclick="check()">
+            <div class="hamburger">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <div class="form-group">
+              <input type="text" class="search rounded-pill" id="search">
+            </div>
+            <ul class="navbar-nav ulist ms-auto">
+              <li class="nav-item"><a href="register.html" class="nav-link me-2">Sign Up</a></li>
+              <li class="nav-item"><a href="" class="nav-link me-3" data-toggle="modal" data-target="#mymodal">Sign In</a></li>
+            </ul>
+            
+            <!-- <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Service</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                </ul>
+            </div> -->
+        </nav>
+
+
+        <!-- modal -->
+         
+        
+
+        <div class="container-fluid">
+            <div class="row bg-img p-4 justify-content-evenly">
+                <div class="col-md-5 p-4 mt-5 d-flex flex-column align-items-center justify-content-center b-s">
+                    <h1 class="head-text text-center">India’s most trusted education platform</h1>
+                    <p class="head-text text-center">Certified online courses and degrees from world class universities.</p>
+                    <a href="#search"><button class="btn btn-primary exp-btn">Explore Programs</button></a>
+                </div>
+                <div class="col-md-7 mt-5 align-items-center justify-content-center lap-img">
+                    <div class="lap-block">
+                        <!-- <div class="button" id="button">
+                          <div class="play-btn" onclick="play()">
+                              <div class="fas fa-play"></div>
+                          </div>
+                        </div> -->
+                        <div class="video embed-responsive embed-responsive-4by3" id="video">
+                            <video width="350" src="video/video.mp4" type="video/mp4" autoplay muted poster="image/poster.png"></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-center mt-5" id="analytics">Analytics</h1>
+            <div class="row shadow rounded p-5 m-4 bar">
+              <div class="col-md-4 d-flex flex-column align-items-center text-center">
+                <div class="circle bg-warning mb-4">
+                  <i class="fas fa-book-open mb-2" style="font-size:60px;"></i>
+                </div>
+                <h4 class="head-text">300+</h4>
+                <h2 class="head-text">Different Courses<h2>
+              </div>
+              <div class="col-md-4 d-flex flex-column align-items-center text-center">
+                <div class="circle bg-warning mb-4">
+                  <i class="fas fa-users mb-2" style="font-size:60px;"></i>
+                </div>
+                <h4 class="head-text">9000+</h4>
+                <h2 class="head-text">Students Enrolled<h2>
+              </div>
+              <div class="col-md-4 d-flex flex-column align-items-center text-center">
+                <div class="circle bg-warning mb-4">
+                  <i class="fas fa-user-graduate mb-2" style="font-size:60px;"></i>
+                </div>
+                <h4 class="head-text">6000+</h4>
+                <h2 class="head-text">Placements<h2>
+              </div>
+            </div>
+        </div>
+        <div class="row p-5 justify-content-evenly">
+          <h1 class="text-center mb-4" id="programs">Our Programs</h1>
+          <div class="col-md-3 m-2 mb-5 bar justify-content-center text-center border rounded">
+            <img src="image/fullstack.jpg" width="50%" class="img-fluid m-2">
+            <div class="p-2 mt-3">
+              <h5 class="">Full Stack</h5>
+              <button class="btn btn-secondary rounded-pill mt-4 p-2" style="width: 70%;">Enroll Now</button>
+              <p class="head-text">300+ Students Enrolled</p>
+              <p class="bg-warning rounded p-3">EMI Starting ₹2,895/month</p>
+            </div>
+          </div>
+
+
+          <div class="col-md-3 m-2 mb-5 bar justify-content-center text-center border rounded">
+            <img src="image/django.jpg" width="50%" class="img-fluid m-2">
+            <div class="p-2 mt-3">
+              <h5 class="">Django</h5>
+              <button class="btn btn-secondary rounded-pill mt-4 p-2" style="width: 70%;">Enroll Now</button>
+              <p class="head-text">300+ Students Enrolled</p>
+              <p class="bg-warning rounded p-3">EMI Starting ₹2,895/month</p>
+            </div>
+          </div>
+
+
+          <div class="col-md-3 m-2 mb-5 bar justify-content-center text-center border rounded">
+            <img src="image/python.jpg" width="50%" class="img-fluid m-2">
+            <div class="p-2 mt-3">
+              <h5 class="">Python</h5>
+              <button class="btn btn-secondary rounded-pill mt-4 p-2" style="width: 70%;">Enroll Now</button>
+              <p class="head-text">300+ Students Enrolled</p>
+              <p class="bg-warning rounded p-3">EMI Starting ₹2,895/month</p>
+            </div>
+          </div>
+
+
+          <div class="col-md-3 m-2 mb-5 bar justify-content-center text-center border rounded">
+            <img src="image/java.jpg" width="50%" class="img-fluid m-2">
+            <div class="p-2 mt-3">
+              <h5 class="">Java</h5>
+              <button class="btn btn-secondary rounded-pill mt-4 p-2" style="width: 70%;">Enroll Now</button>
+              <p class="head-text">300+ Students Enrolled</p>
+              <p class="bg-warning rounded p-3">EMI Starting ₹2,895/month</p>
+            </div>
+          </div>
+
+
+          <div class="col-md-3 m-2 mb-5 bar justify-content-center text-center border rounded">
+            <img src="image/html.jpg" width="50%" class="img-fluid m-2">
+            <div class="p-2 mt-3">
+              <h5 class="">HTML</h5>
+              <button class="btn btn-secondary rounded-pill mt-4 p-2" style="width: 70%;">Enroll Now</button>
+              <p class="head-text">300+ Students Enrolled</p>
+              <p class="bg-warning rounded p-3">EMI Starting ₹2,895/month</p>
+            </div>
+          </div>
+
+
+          <div class="col-md-3 m-2 mb-5 bar justify-content-center text-center border rounded">
+            <img src="image/css.jpg" width="50%" class="img-fluid m-2">
+            <div class="p-2 mt-3">
+              <h5 class="">CSS</h5>
+              <button class="btn btn-secondary rounded-pill mt-4 p-2" style="width: 70%;">Enroll Now</button>
+              <p class="head-text">300+ Students Enrolled</p>
+              <p class="bg-warning rounded p-3">EMI Starting ₹2,895/month</p>
+            </div>
+          </div>
+
+
+          <div class="col-md-3 m-2 mb-5 bar justify-content-center text-center border rounded">
+            <img src="image/js.jpg" width="50%" class="img-fluid m-2">
+            <div class="p-2 mt-3">
+              <h5 class="">Java Script</h5>
+              <button class="btn btn-secondary rounded-pill mt-4 p-2" style="width: 70%;">Enroll Now</button>
+              <p class="head-text">300+ Students Enrolled</p>
+              <p class="bg-warning rounded p-3">EMI Starting ₹2,895/month</p>
+            </div>
+          </div>
+
+
+          <div class="col-md-3 m-2 mb-5 bar justify-content-center text-center border rounded">
+            <img src="image/hcj.jpg" width="50%" class="img-fluid m-2">
+            <div class="p-2 mt-3">
+              <h5 class="">Frontend</h5>
+              <button class="btn btn-secondary rounded-pill mt-4 p-2" style="width: 70%;">Enroll Now</button>
+              <p class="head-text">300+ Students Enrolled</p>
+              <p class="bg-warning rounded p-3">EMI Starting ₹2,895/month</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center" id="staff">Tech Avengers</h1>
+            <iframe src="slider.html" height="500px" width="100%" scrolling="no"></iframe>
+          </div>
+        </div>
+
+        <!-- footer -->
+        <div class="container-fluid m-0 p-0">
+          <!-- Footer -->
+          <footer
+                  class="text-center text-lg-start text-white"
+                  style="background-color: #1c2331"
+                  >
+            <!-- Section: Social media -->
+            <section
+                     class="d-flex justify-content-between p-4"
+                     style="background-color: #6351ce"
+                     >
+              <!-- Left -->
+              <div class="me-5">
+                <span>Get connected with us on social networks:</span>
+              </div>
+              <!-- Left -->
+        
+              <!-- Right -->
+              <div>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+              <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+        
+            <!-- Section: Links  -->
+            <section class="">
+              <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                  <!-- Grid column -->
+                  <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold">Creart</h6>
+                    <hr
+                        class="mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: #7c4dff; height: 2px"
+                        />
+                    <p>
+                      Here you can use rows and columns to organize your footer
+                      content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                      elit.
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+        
+                  <!-- Grid column -->
+                  <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Products</h6>
+                    <hr
+                        class="mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: #7c4dff; height: 2px"
+                        />
+                    <p>
+                      <a href="#!" class="text-white">Bootstrap</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">Bootstrap</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">NodeJs</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">React Native</a>
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+        
+                  <!-- Grid column -->
+                  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Useful links</h6>
+                    <hr
+                        class="mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: #7c4dff; height: 2px"
+                        />
+                    <p>
+                      <a href="#!" class="text-white">Your Account</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">Become an Affiliate</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">Shipping Rates</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">Help</a>
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+        
+                  <!-- Grid column -->
+                  <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <hr
+                        class="mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: #7c4dff; height: 2px"
+                        />
+                    <p><i class="fas fa-home mr-3"></i>  Hyderabad, Telangana, India</p>
+                    <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
+                    <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                    <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                  </div>
+                  <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+              </div>
+            </section>
+            <!-- Section: Links  -->
+        
+            <!-- Copyright -->
+            <div
+                 class="text-center p-3"
+                 style="background-color: rgba(0, 0, 0, 0.2)"
+                 >
+              © 2022 Copyright : 
+              <a class="text-white" href="https://instagram.com/world_of_arts_1601?igshid=YmMyMTA2M2Y=" target="_blank">Varaprasad_1601</a>
+            </div>
+            <!-- Copyright -->
+          </footer>
+          <!-- Footer -->
+        
+        </div>
+
+        <div class="msg bg-warning">
+          <i class="fas fa-comment"></i>
+        </div>
+
+
+    </section>
+
+
+    
+
+    <script src="script.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script>
+        function play(){
+            document.getElementById("video").innerHTML="<video width='420' id='video' autoplay src='video/video.mp4' type='video/mp4' muted poster='image/poster.png' controls ></video>";
+            document.getElementById("button").style.display="none";
+        }
+    </script>
+</body>
+</html>
